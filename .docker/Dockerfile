@@ -86,6 +86,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     ros-$ROS_DISTRO-velocity-controllers \
     ros-$ROS_DISTRO-effort-controllers \
     ros-$ROS_DISTRO-rosbridge-suite \
+    ros-$ROS_DISTRO-trac-ik-kinematics-plugin \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /

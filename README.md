@@ -1,14 +1,5 @@
 # Quick start
 
-## Installation and configuration
-
-```
-- rosdep install --from-paths src --ignore-src -r -y
-- sudo apt-get install ros-noetic-trac-ik-kinematics-plugin
-- catkin build
-```
-Docker build: takes time! Build at the beginning of the class:
-
 ### Docker
 
 [Moveit and Docker: best practices](https://picknik.ai/ros/robotics/docker/2021/07/20/Vatan-Aksoy-Tezer-Docker.html)
@@ -79,7 +70,7 @@ devcontainer.json provided in .docker folder
 
 - Udev rules for Realsense Driver
 
-    Download the [udev rules](https://github.com/IntelRealSense/librealsense/blob/master/config/99-realsense-libusb.rules) and place them in /etc/udev/rules.d  
+    Download the [udev rules](https://github.com/IntelRealSense/librealsense/blob/master/config/99-realsense-libusb.rules) and place them in /etc/udev/rules.d
 
     Run ```sudo service udev reload``` and ```sudo service udev restart``` to load the new rules, not required if you reboot
 
@@ -93,7 +84,13 @@ Recommended to reboot at this point to ensure all changes are applied
 
 ### Worflow
 
-clone repo -> build image -> run image
+1. `cd ~/dev_ws/src``
+2. clone the repository `git clone git@github.com:roboticswithjulia/MRAC_ur_commander.git`
+3. `cd ~/dev_ws`
+4. rosdep install --from-paths src --ignore-src -r -y
+5. `catkin clean`
+6. `catkin build`
+
 
 ### fork and clone repo
 
@@ -106,6 +103,8 @@ Running the following command from the root of the repo will execute the build i
 ```shell
 .docker/build_image.sh
 ```
+
+:warning: Docker build: takes time! Build at the beginning of the class:
 
 &nbsp;
 
@@ -133,6 +132,16 @@ sudo chown -R $USER /dev_ws
 
 Open vscode, go to the docker tab.
 Select the running container, right click and select attach vscode
+
+&nbsp;
+
+#### Attach vs code to container
+
+In vs code go to the Docker tab in the side bar. Right click on the container named moveit1_ur:latest. Select attach vscode.
+
+When attaching to the container for first time:
+In vs code open the command palette (Ctrl-Shift-P). Select `Remote-containers: Open attached container configuration file` | `Open attached container configuration file`. Copy paste content of devcontainer.json and save. Close the vscode window and reattach.
+
 
 &nbsp;
 
@@ -164,32 +173,25 @@ This will source the workspace for every new shell opened in  /dev_ws or /dev_ws
 
 &nbsp;
 
-#### Attach vs code to container
 
-In vs code go to the Docker tab in the side bar. Right click on the container named moveit1_ur:latest. Select attach vscode.  
-
-When attaching to the container for first time:  
-In vs code open the command palette (Ctrl-Shift-P). Select `Remote-containers: Open attached container configuration file` | `Open attached container configuration file`. Copy paste content of devcontainer.json and save. Close the vscode window and reattach.
 
 &nbsp;
 
 #### Launch the simulation
 
- Inside the terminal where the docker has been run the .docker/run_user.sh --privileged launch the ur10e commander file `roslaunch commander ur10e_ka_commander.launch` 
- 
- See that rviz opens, UR10 appears
- 
- Open a terminal, go to `/home/${user}/dev_ws/src/MRAC_ur_commander`
- 
- Source the current workspace: `source ../../devel/setup.bash`
- 
- Open vscode `code .`
- 
- Go to file commander/notebooks/commander_examples.ipynb &rarr; double click.
- 
- Make sure that the kernel is Started (Python 3.8.10) and start to execute the different codes.
- 
+ Inside the terminal where the docker has been run the .docker/run_user.sh --privileged launch the ur10e commander file `roslaunch commander ur10e_ka_commander.launch`
 
+ See that rviz opens, UR10 appears
+
+ Open a terminal, go to `/home/${user}/dev_ws/src/MRAC_ur_commander`
+
+ Source the current workspace: `source ../../devel/setup.bash`
+
+ Open vscode `code .`
+
+ Go to file commander/notebooks/commander_examples.ipynb &rarr; double click.
+
+ Make sure that the kernel is Started (Python 3.8.10) and start to execute the different codes.
 
 
 
@@ -199,9 +201,9 @@ Before closing the terminal you ran the docker image from remember to commit and
 
 ### Connecting to the robot
 
-The bringup launch file will attempt to start the UR driver with hight process priority.  
+The bringup launch file will attempt to start the UR driver with hight process priority.
 
-Ensure both the user on the host and container have the required permissions to do so.  
+Ensure both the user on the host and container have the required permissions to do so.
 See section "Process priority for UR driver"
 
 These instructions assume
@@ -209,18 +211,18 @@ These instructions assume
 - Robot IP: 192.168.56.101
 - Docker Host IP: 192.168.56.1
 
-Launch the robot bringup, this file sets the robot IP and loads the kinematics calibration for the IAAC UR10e.  
+Launch the robot bringup, this file sets the robot IP and loads the kinematics calibration for the IAAC UR10e.
 
 - without endeffector
 
     ```shell
-    ur10e_moveit_config ur10e_iaac_bringup.launch 
+    ur10e_moveit_config ur10e_iaac_bringup.launch
     ```
 
 - with endeffector
 
     ```shell
-    ur10e_ee_moveit_config ur10e_ee_iaac_bringup.launch 
+    ur10e_ee_moveit_config ur10e_ee_iaac_bringup.launch
     ```
 
 On the ur pendant open the program named ros and press play
@@ -239,4 +241,3 @@ When the robot is connected you should see the following in the terminal you lau
 ```
 
 You can use the `top` command to check the ur driver is running unnicely
-
