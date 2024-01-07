@@ -48,7 +48,6 @@ Install [vs code](https://code.visualstudio.com/) and the following vs code exte
 - [docker](https://code.visualstudio.com/docs/containers/overview)
 - [remote development](https://code.visualstudio.com/docs/remote/remote-overview)
 
-devcontainer.json provided in .docker folder
 
 &nbsp;
 
@@ -82,23 +81,28 @@ Recommended to reboot at this point to ensure all changes are applied
 
 &nbsp;
 
-### Worflow
-
-1. `cd ~/dev_ws/src``
-2. clone the repository `git clone git@github.com:roboticswithjulia/MRAC_ur_commander.git`
-3. `cd ~/dev_ws`
-4. rosdep install --from-paths src --ignore-src -r -y
-5. `catkin clean`
-6. `catkin build`
-
-
 ### fork and clone repo
+
+1. Go to [MRAC_ur_commander](https://github.com/roboticswithjulia/MRAC_ur_commander) and fork the repository.
+2. `cd ~/dev_ws/src`
+3. clone the forked repository.
+4. `cd ~/dev_ws`
+5. rosdep install --from-paths src --ignore-src -r -y
+6. `catkin clean`
+7. `catkin build`
+8. `source devel/setup.bash`
+9. `cd ~/dev_ws/src/MRAC_ur_commander`
+10. `code .` open vscode
+
 
 &nbsp;
 
+
+
 ### Building the image
 
-Running the following command from the root of the repo will execute the build image shell script
+1. Open a terminal inside the vscode
+2. Running the following command from the root of the repo will execute the build image shell script
 
 ```shell
 .docker/build_image.sh
