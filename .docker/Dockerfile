@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     git \
     curl \
     wget \
+    terminator \
     build-essential \
     cmake \
     python3-pip \
@@ -54,7 +55,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     ros-$ROS_DISTRO-rqt \
     ros-$ROS_DISTRO-rqt-common-plugins \
     ros-$ROS_DISTRO-rqt-robot-plugins \
-    ros-$ROS_DISTRO-rqt-joint-trajectory-controller \   
+    ros-$ROS_DISTRO-rqt-joint-trajectory-controller \
     ros-$ROS_DISTRO-roslint \
     ros-$ROS_DISTRO-rqt-gui \
     ros-$ROS_DISTRO-rqt-gui-py \
@@ -138,7 +139,7 @@ RUN git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git
 # RUN apt-get update && apt-get install -y --no-install-recommends\
 #     libgoogle-glog-dev \
 #     libusb-1.0-0-dev \
-#     libeigen3-dev \   
+#     libeigen3-dev \
 #     libgflags-dev \
 #     && apt-get clean \
 #     && rm -rf /var/lib/apt/lists/*

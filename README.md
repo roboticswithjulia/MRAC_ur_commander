@@ -108,7 +108,7 @@ Recommended to reboot at this point to ensure all changes are applied
 .docker/build_image.sh
 ```
 
-:warning: Docker build: takes time! Build at the beginning of the class:
+:warning: Docker build: takes time! Build at the beginning of the class.
 
 &nbsp;
 
@@ -177,23 +177,16 @@ This will source the workspace for every new shell opened in  /dev_ws or /dev_ws
 
 &nbsp;
 
-
-
-&nbsp;
-
 #### Launch the simulation
 
- Inside the terminal where the docker has been run the .docker/run_user.sh --privileged launch the ur10e commander file `roslaunch commander ur10e_ka_commander.launch`
+
+ Inside the terminal where the docker has been run the .docker/run_user.sh --privileged execute `terminator`
+
+ Inside the terminator terminal launch the ur10e commander file `roslaunch commander ur10e_ka_commander.launch`
 
  See that rviz opens, UR10 appears
 
- Open a terminal, go to `/home/${user}/dev_ws/src/MRAC_ur_commander`
-
- Source the current workspace: `source ../../devel/setup.bash`
-
- Open vscode `code .`
-
- Go to file commander/notebooks/commander_examples.ipynb &rarr; double click.
+ Go to file commander/notebooks/commander_examples.ipynb &rarr; double click and start to run the simulation.
 
  Make sure that the kernel is Started (Python 3.8.10) and start to execute the different codes.
 
@@ -203,7 +196,7 @@ This will source the workspace for every new shell opened in  /dev_ws or /dev_ws
 
 Before closing the terminal you ran the docker image from remember to commit and push your changes.
 
-### Connecting to the robot
+### Launch the real robot
 
 The bringup launch file will attempt to start the UR driver with hight process priority.
 
